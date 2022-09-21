@@ -32,7 +32,7 @@ const JWTRegister = styled(JustifyBox)(() => ({
   },
 }));
 
-// inital login credentials
+// initial login credentials
 const initialValues = {
   email: '',
   password: '',

@@ -42,7 +42,7 @@ const Footer = () => {
           <FooterContent>
             <Span sx={{ m: 'auto' }}></Span>
             <Paragraph sx={{ m: 0 }}>
-              Design and Developed by <bold>TAT DAT</bold>
+              Design and Developed by <span>DAT</span>
             </Paragraph>
           </FooterContent>
         </AppFooter>
