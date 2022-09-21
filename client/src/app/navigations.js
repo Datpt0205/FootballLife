@@ -1,6 +1,9 @@
 export const navigations = [
   { name: 'Dashboard', path: '/dashboard/default', icon: 'dashboard' },
-  // { label: 'PAGES', type: 'label' },
+  { label: 'PAGES', type: 'label' },
+  { 
+    name : 'User', path: '/user', icon: 'person'
+  },
   // {
   //   name: 'Session/Auth',
   //   icon: 'security',
