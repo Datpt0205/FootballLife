@@ -6,17 +6,18 @@ import {
     getPitchCenter, 
     getPitchCenters
 }  from '../controllers/pitchCenter.js'
+import { verifyAdmin } from '../utils/verifyToken.js';
 
 const router = express.Router();
 
 //CREATE
-router.post('/', createPitchCenter);
+router.post('/', verifyAdmin, createPitchCenter);
 
 //Update
-router.put('/:id', updatePitchCenter);
+router.put('/:id', verifyAdmin, updatePitchCenter);
 
 //delete
-router.delete('/:id', deletePitchCenter);
+router.delete('/:id', verifyAdmin, deletePitchCenter);
 
 //get
 router.get('/:id', getPitchCenter);
