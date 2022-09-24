@@ -1,29 +1,28 @@
 import mongoose from 'mongoose';
 
 const PitchSchema = new mongoose.Schema({
-    name: {
+    title: {
         type:String,
         require: true,
     },
-    type:{
-        type:String,
+    price: {
+        type: Number,
         require: true,
     },
-    address:{
-        type:String,
-        require: true,
-    },
-    price:{
-        type:String,
+    type: {
+        type: Number,
         require: true,
     },
     description:{
         type:String,
         require: true,
     },
-    type:{
-        type:String,
-        require: true,
-    }
-})
+    pitchNumbers:[{number:Number, unavailableDates: [{ type: Date }]}]
+},
+    {timestamps:true}
+);
+
+export default mongoose.model("Pitch", PitchSchema)
+
+
 
