@@ -43,8 +43,13 @@ export const getPitchCenter = async (req, res, next) => {
 };
 
 export const getPitchCenters = async (req, res, next) => {
+  const { min, max, ...others } = req.query;
+
   try {
-    const pitchCenters = await PitchCenter.find();
+    const pitchCenters = await PitchCenter.find({
+      ...others,
+      cheapestPrice: { $gt: min | 1, $lt: max || 999 },
+    }).limit(req.query.limit);
     res.status(200).json(pitchCenters);
   } catch (err) {
     next(err);
