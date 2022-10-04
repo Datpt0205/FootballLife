@@ -9,6 +9,10 @@ const PitchCenterSchema = new mongoose.Schema({
         type:String,
         require: true,
     },
+    city:{
+        type:String,
+        require: true,
+    },
     address:{
         type:String,
         require: true,

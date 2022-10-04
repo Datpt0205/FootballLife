@@ -6,6 +6,7 @@ import usersRoute from "./routes/users.js"
 import pitchCentersRoute from "./routes/pitchCenters.js"
 import pitchesRoute from "./routes/pitches.js"
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 
 const app = express();
 dotenv.config();
@@ -21,6 +22,7 @@ const connect = () => {
 //middleware
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors())
 
 app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
