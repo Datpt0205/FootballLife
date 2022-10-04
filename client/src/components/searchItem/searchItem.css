@@ -30,7 +30,7 @@
   font-size: 12px;
 }
 
-.siTaxiOp {
+.siParkingFee {
   font-size: 12px;
   background-color: #008009;
   color: white;
@@ -39,13 +39,9 @@
   border-radius: 5px;
 }
 
-.siSubtitle{
-  font-size: 12px;
-  font-weight: bold;
-}
-
 .siFeatures{
   font-size: 12px;
+  font-weight: bold;
 }
 
 .siCancelOp{
