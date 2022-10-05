@@ -6,6 +6,7 @@ import {
 import Home from "./pages/home/Home";
 import PitchCenter from "./pages/pitchCenter/PitchCenter";
 import List from "./pages/list/List";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/pitchCenters" element={<List/>}/>
         <Route path="/pitchCenters/:id" element={<PitchCenter/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </BrowserRouter>
   );
