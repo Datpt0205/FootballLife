@@ -15,6 +15,7 @@ router.post('/:pitchCenterid', verifyAdmin, createPitch);
 
 //Update
 router.put('/:id', verifyAdmin, updatePitch);
+router.put('availability/:id', updatePitch);
 
 //delete
 router.delete('/:id/:pitchCenterid', verifyAdmin, deletePitch);
