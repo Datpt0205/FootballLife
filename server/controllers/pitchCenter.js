@@ -1,4 +1,5 @@
 import PitchCenter from "../models/PitchCenter.js";
+import Pitch from "../models/Pitch.js"
 
 export const createPitchCenter = async (req, res, next) => {
   const newPitchCenter = new PitchCenter(req.body);
@@ -86,3 +87,15 @@ export const countByType = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getPitchCenterPitches = async (req, res, next) => {
+  try{
+    const pitchCenter = await PitchCenter.findById(req.params.id)
+    const list = await Promise.all(pitchCenter.pitches.map(pitch=>{
+      return Pitch.findById(pitch);
+    }))
+    res.status(200).json(list)
+  }catch(err){
+    next(err);
+  }
+}

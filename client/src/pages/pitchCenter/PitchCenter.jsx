@@ -11,17 +11,22 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import {SearchContext} from "../../context/SearchContext"
+import {AuthContext} from '../../context/AuthContext'
+import Reserve from "../../components/reserve/Reserve"; 
 
 const PitchCenter = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const { data, loading, error } = useFetch(`/pitchCenters/find/${id}`);
+  const {user} = useContext(AuthContext)
+  const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
 
@@ -50,6 +55,14 @@ const PitchCenter = () => {
     }
 
     setSlideNumber(newSlideNumber);
+  };
+
+  const handleClick = () => {
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -125,7 +138,7 @@ const PitchCenter = () => {
                 <h2>
                   <b>${days * data.cheapestPrice * options.pitch}</b> ({days} days)
                 </h2>
-                <button>Reserve or Book Now!</button>
+                <button onClick = {handleClick}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
@@ -133,6 +146,7 @@ const PitchCenter = () => {
           <Footer />
         </div>
       )}
+      {openModal && <Reserve setOpen={setOpenModal} pitchCenterId={id}/>}
     </div>
   );
 };

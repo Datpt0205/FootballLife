@@ -30,6 +30,22 @@ export const updatePitch = async (req, res, next) => {
     }
 }
 
+export const updatePitchAvailability = async (req, res, next) => {
+    try {
+      await Pitch.updateOne(
+        { "pitchNumbers._id": req.params.id },
+        {
+          $push: {
+            "pitchNumbers.$.unavailableDates": req.body.dates
+          },
+        }
+      );
+      res.status(200).json("Pitch status has been updated.");
+    } catch (err) {
+      next(err);
+    }
+  };
+
 export const deletePitch = async (req, res, next) => {
     const pitchCenterId = req.params.pitchCenterid;
     try{

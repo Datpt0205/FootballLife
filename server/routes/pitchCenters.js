@@ -6,7 +6,8 @@ import {
     getPitchCenter, 
     getPitchCenters,
     countByCity,
-    countByType
+    countByType,
+    getPitchCenterPitches
 }  from '../controllers/pitchCenter.js'
 import { verifyAdmin } from '../utils/verifyToken.js';
 
@@ -28,5 +29,6 @@ router.get('/find/:id', getPitchCenter);
 router.get('/', getPitchCenters);
 router.get('/countByType', countByType);
 router.get('/countByCity', countByCity);
+router.get('/pitch/:id', getPitchCenterPitches);
 
 export default router 
