@@ -8,7 +8,7 @@ import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
-import {AuthContext} from "./context/AuthContext"
+import { AuthContext } from "./context/AuthContext";
 import { userColumns, pitchCenterColumns } from "./datatablesource";
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List columns={userColumns}/>
+                    <List columns={userColumns} />
                   </ProtectedRoute>
                 }
               />
@@ -68,7 +68,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List columns={pitchCenterColumns}/>
+                    <List columns={pitchCenterColumns} />
                   </ProtectedRoute>
                 }
               />
@@ -84,7 +84,33 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={productInputs} title="Add New Product" />
+                    <NewPitchCenter />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+            <Route path="pitchCenters">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <List columns={pitchColumns} />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":productId"
+                element={
+                  <ProtectedRoute>
+                    <Single />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                    <NewPitch />
                   </ProtectedRoute>
                 }
               />

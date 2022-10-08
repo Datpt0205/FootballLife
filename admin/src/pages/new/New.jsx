@@ -9,7 +9,7 @@ const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [info, setInfo] = ueState("");
 
-  const handleChange = async e => {
+  const handleChange = e => {
     setInfo(pre=>({...pre,[e.target.id]:[e.target.value]}))
   } 
 
