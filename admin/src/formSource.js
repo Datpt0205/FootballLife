@@ -3,25 +3,25 @@ export const userInputs = [
       id: 1,
       label: "Username",
       type: "text",
-      placeholder: "john_doe",
+      placeholder: "dat",
     },
     {
       id: 2,
-      label: "Name and surname",
+      label: "Name",
       type: "text",
-      placeholder: "John Doe",
+      placeholder: "Phung Tat Dat",
     },
     {
       id: 3,
       label: "Email",
       type: "mail",
-      placeholder: "john_doe@gmail.com",
+      placeholder: "dat@gmail.com",
     },
     {
       id: 4,
       label: "Phone",
       type: "text",
-      placeholder: "+1 234 567 89",
+      placeholder: "+84 234 567 89",
     },
     {
       id: 5,
@@ -32,13 +32,19 @@ export const userInputs = [
       id: 6,
       label: "Address",
       type: "text",
-      placeholder: "Elton St. 216 NewYork",
+      placeholder: "D36 An Thuong 34, My An, Ngu Hanh Son",
     },
     {
       id: 7,
       label: "Country",
       type: "text",
-      placeholder: "USA",
+      placeholder: "Viet Nam",
+    },
+    {
+      id: 8,
+      label: "City",
+      type: "text",
+      placeholder: "Da Nang",
     },
   ];
 
@@ -98,7 +104,7 @@ export const userInputs = [
       id: "title",
       label: "Title",
       type: "text",
-      placeholder: "",
+      placeholder: "5 people yard",
     },
     {
       id: "description",
@@ -111,12 +117,6 @@ export const userInputs = [
       label: "Price",
       type: "number",
       placeholder: "100",
-    },
-    {
-      id: "maxPeople",
-      label: "Max People",
-      type: "number",
-      placeholder: "2",
     },
   ];
   
