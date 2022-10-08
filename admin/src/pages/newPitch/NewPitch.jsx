@@ -3,9 +3,27 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
+import { pitchInputs } from "../../formSource";
+import axios from "axios";
 
-const NewPitch = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+const NewPitch = () => {
+  const [info, setInfo] = useState({});
+  const [pitchCenterId, setPitchCenterId] = useState(undefined);
+  const [pitches, setPitches] = useState([]);
+
+  const { data, loading, error } = useFetch("/pitchCenters");
+
+  const handleChange = (e) => {
+    setInfo((pre) => ({ ...pre, [e.target.id]: [e.target.value] }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const pitchNumbers = pitches.split(",").map((pitch) => ({ number: pitch }));
+    try {
+      await axios.post(`/pitches/${pitchCenterId}`, { ...info, pitchNumbers });
+    } catch (err) {}
+  };
 
   return (
     <div className="new">
@@ -13,40 +31,48 @@ const NewPitch = ({ inputs, title }) => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>{title}</h1>
+          <h1>Add new Pitch</h1>
         </div>
         <div className="bottom">
-          <div className="left">
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              alt=""
-            />
-          </div>
           <div className="right">
             <form>
-              <div className="formInput">
-                <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                </label>
-                <input
-                  type="file"
-                  id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
+              {pitchInputs.map((input) => (
+                <div className="formInput" key={input.id}>
+                  <label>{input.label}</label>
+                  <input
+                    id={input.id}
+                    type={input.type}
+                    placeholder={input.placeholder}
+                    onChange = {handleChange}
+                  />
+                </div>
+              ))}
+
+              <div className="formInput" key={input.id}>
+                <label>Pitches</label>
+                <textarea
+                  onChange={(e) => setPitches(e.target.value)}
+                  placeholder="Give comma between pitch number"
                 />
               </div>
 
-              {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
-                </div>
-              ))}
-              <button>Send</button>
+              <div className="formInput">
+                <label>Choose a pitch</label>
+                <select
+                  id="pitchCenterId"
+                  onChange={(e) => setPitchCenterId(e.target.value)}
+                >
+                  {loading
+                    ? "Loading"
+                    : data &&
+                      data.map((pitchCenter) => {
+                        <option key ={pitchCenter._id} value={pitchCenter._id}>
+                          {pitchCenter.name}
+                        </option>;
+                      })}
+                </select>
+              </div>
+              <button onClick={handleClick}>Send</button>
             </form>
           </div>
         </div>
