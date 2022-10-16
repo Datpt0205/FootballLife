@@ -1,4 +1,4 @@
-import Nav from '../components/Nav'
+import Nav from '../../components/nav/Nav'
 import {useState, useEffect} from 'react'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'

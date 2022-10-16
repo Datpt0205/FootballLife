@@ -100,7 +100,7 @@ const PitchCenter = () => {
             </div>
           )}
           <div className="pitchCenterWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button className="bookNow">View location on map!</button>
             <h1 className="pitchCenterTitle">{data.name}</h1>
             <div className="pitchCenterAddress">
               <FontAwesomeIcon icon={faLocationDot} />

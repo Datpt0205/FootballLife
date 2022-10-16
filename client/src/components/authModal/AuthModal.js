@@ -27,7 +27,7 @@ const AuthModal = ({setShowModal, isSignUp}) => {
                 return
             }
 
-          const response = await axios.post(`http://localhost:8000/${isSignUp ? 'signup' : 'login'}`, {email, password})
+          const response = await axios.post(`http://localhost:8000/${isSignUp ? 'register' : 'login'}`, {email, password})
 
           setCookie('AuthToken', response.data.token)
           setCookie('UserId', response.data.userId)
@@ -35,7 +35,7 @@ const AuthModal = ({setShowModal, isSignUp}) => {
           const success = response.status === 201
 
           if (success && isSignUp ) navigate('/onboarding')
-          if (success && !isSignUp ) navigate('/dashboard')
+          if (success && !isSignUp ) navigate('/home')
 
           window.location.reload()
 

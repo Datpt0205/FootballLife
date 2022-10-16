@@ -61,9 +61,8 @@ const Reserve = ({ setOpen, pitchCenterId }) => {
           return res.data;
         })
       );
-      //Trả về trang thanh toán online(not yet)
       setOpen(false);
-      navigate("/");
+      navigate("/paypal");
     } catch (err) {}
   };
   return (

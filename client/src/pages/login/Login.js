@@ -30,14 +30,17 @@ const Login = () => {
         }
     }
 
-    return <div className="login" >
+    return (
+    <div className="login" >
         <div className="lContainer" >
-            <input type="text" placeholder="username" id="username" onChange={handleChange} className="lInput"></input>
-            <input type="password" placeholder="password" id="password" onChange={handleChange} className="lInput"></input>
+            <input type="text" placeholder="username" id="username" onChange={handleChange} className="lInput"></input><br/>
+            <input type="password" placeholder="password" id="password" onChange={handleChange} className="lInput"></input><br/>
             <button disable={loading} onClick={handleClick} className="lButton">Login</button>
             {error && <span>{error.message}</span>}
         </div>
     </div>
+    )
 };
 
 export default Login
+
