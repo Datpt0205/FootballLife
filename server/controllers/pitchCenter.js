@@ -91,7 +91,7 @@ export const countByType = async (req, res, next) => {
 export const getPitchCenterPitches = async (req, res, next) => {
   try{
     const pitchCenter = await PitchCenter.findById(req.params.id)
-    const list = await Promise.all(pitchCenter.pitches.map(pitch=>{
+    const list = await Promise.all(pitchCenter.pitches.map((pitch)=>{
       return Pitch.findById(pitch);
     }))
     res.status(200).json(list)

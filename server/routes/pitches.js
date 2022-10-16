@@ -4,7 +4,8 @@ import {
     updatePitch, 
     deletePitch, 
     getPitch, 
-    getPitches
+    getPitches,
+    updatePitchAvailability,
 }  from '../controllers/pitch.js'
 import { verifyAdmin } from '../utils/verifyToken.js';
 
@@ -15,10 +16,10 @@ router.post('/:pitchCenterid', verifyAdmin, createPitch);
 
 //Update
 router.put('/:id', verifyAdmin, updatePitch);
-router.put('availability/:id', updatePitch);
+router.put('availability/:id', updatePitchAvailability);
 
 //delete
-router.delete('/:id/:pitchCenterid', verifyAdmin, deletePitch);
+router.delete('/:id', verifyAdmin, deletePitch);
 
 //get
 router.get('/:id', getPitch);

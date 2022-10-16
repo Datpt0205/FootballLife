@@ -5,6 +5,7 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { useState } from "react";
 import { pitchInputs } from "../../formSource";
 import axios from "axios";
+import useFetch from "../../hooks/useFetch";
 
 const NewPitch = () => {
   const [info, setInfo] = useState({});
@@ -48,7 +49,7 @@ const NewPitch = () => {
                 </div>
               ))}
 
-              <div className="formInput" key={input.id}>
+              <div className="formInput">
                 <label>Pitches</label>
                 <textarea
                   onChange={(e) => setPitches(e.target.value)}
@@ -57,7 +58,7 @@ const NewPitch = () => {
               </div>
 
               <div className="formInput">
-                <label>Choose a pitch</label>
+                <label>Choose a Pitch Center</label>
                 <select
                   id="pitchCenterId"
                   onChange={(e) => setPitchCenterId(e.target.value)}

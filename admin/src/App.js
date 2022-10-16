@@ -9,7 +9,9 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
-import { userColumns, pitchCenterColumns } from "./datatablesource";
+import { userColumns, pitchCenterColumns, pitchColumns } from "./datatablesource";
+import NewPitch from "./pages/newPitch/NewPitch";
+import NewPitchCenter from "./pages/newPitchCenter/NewPitchCenter";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -58,7 +60,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={userInputs} title="Add New User" />{" "}
+                    <New inputs={userInputs} title="Add New User" />
                   </ProtectedRoute>
                 }
               />
@@ -89,7 +91,7 @@ function App() {
                 }
               />
             </Route>
-            <Route path="pitchCenters">
+            <Route path="pitches">
               <Route
                 index
                 element={
