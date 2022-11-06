@@ -10,8 +10,13 @@ const Datatable = ({columns}) => {
 
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-  const [list, setList] = useState();
+  const [list, setList] = useState("");
   const {data, loading, error} = useFetch(`/${path}`);
+  const [query, setQuery] = useState("");
+
+  // const search = (dataSearch) => {
+  //   return dataSearch.filter(item => item.username.toLowerCase().includes(query));
+  // }
 
   useEffect(() => {
     setList(data);
@@ -55,6 +60,7 @@ const Datatable = ({columns}) => {
         </Link>
       </div>
       <DataGrid
+        // dataSearch = {search(data)}
         className="datagrid"
         rows={list}
         columns={columns.concat(actionColumn)}

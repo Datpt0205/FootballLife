@@ -100,7 +100,6 @@ const PitchCenter = () => {
             </div>
           )}
           <div className="pitchCenterWrapper">
-            <button className="bookNow">View location on map!</button>
             <h1 className="pitchCenterTitle">{data.name}</h1>
             <div className="pitchCenterAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -127,7 +126,7 @@ const PitchCenter = () => {
             </div>
             <div className="pitchCenterDetails">
               <div className="pitchCenterDetailsTexts">
-                <p className="pitchCenterDesc">{data.description}</p>
+                <p className="pitchCenterDesc"><b>{data.description}</b></p>
               </div>
               <div className="pitchCenterDetailsPrice">
                 <h1>Perfect for a {days} day!</h1>

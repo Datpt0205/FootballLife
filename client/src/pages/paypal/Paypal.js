@@ -4,7 +4,7 @@ import './paypal.css'
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM }) 
 
- function Paypal() {
+ const Paypal = () => {
     const[price, setPrice] = useState(0)
     const createOrder = (data, actions) =>{
         return actions.order.create({

@@ -7,17 +7,32 @@ import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNone
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import useFetch from "../../hooks/useFetch";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
   const { dispatch } = useContext(DarkModeContext);
+  const { data, loading, error } = useFetch(`/${path}`);
+  const [query, setQuery] = useState("");
 
   return (
     <div className="navbar">
       <div className="wrapper">
         <div className="search">
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => setQuery(e.target.value)}
+          />
           <SearchOutlinedIcon />
+          {/* <ul className="list">
+            {data.filter(user=>user.username.toLowerCase().includes(query)).map((user) => (
+              <li key = {user._id} className="listItem">{user.username}</li>
+            ))}
+          </ul> */}
         </div>
         <div className="items">
           <div className="item">

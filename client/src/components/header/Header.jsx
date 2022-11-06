@@ -1,7 +1,11 @@
 import {
   faCalendarDays,
   faPerson,
+  faFootball,
+  faMap,
+  faUserFriends
 } from "@fortawesome/free-solid-svg-icons";
+import {FaFootballBall} from "react-icons/fa"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import "./header.css";
@@ -12,7 +16,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
-
+import { AuthContext } from "../../context/AuthContext";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -31,6 +35,7 @@ const Header = ({ type }) => {
   });
 
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -48,6 +53,16 @@ const Header = ({ type }) => {
     navigate("/pitchCenters", { state: { destination, dates, options } });
   };
 
+  const handleClickBook = () => {
+    navigate("/")
+  }
+  const handleClickMap = () => {
+    navigate("/map")
+  }
+  const handleClickMatch = () => {
+    navigate("/match")
+  }
+
   return (
     <div className="header">
       <div
@@ -55,20 +70,42 @@ const Header = ({ type }) => {
           type === "list" ? "headerContainer listMode" : "headerContainer"
         }
       >
+        <div className="headerList">
+          <div className="headerListItem active">
+            <FontAwesomeIcon icon={faFootball}  />
+            <span button onClick={handleClickBook}>Booking</span>
+          </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faMap} />
+            <span button onClick = {handleClickMap}>Map</span>
+          </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faUserFriends} />
+            <span button onClick = {handleClickMatch}>Matches</span>
+          </div>
+        </div>
         {type !== "list" && (
           <>
+           <h1 className="headerTitle">
+              A lifetime of discounts? It's Genius.
+            </h1>
+            <p className="headerDesc">
+              Get rewarded for your activities – unlock instant savings of 10% or
+              more with a free Refubooking account
+            </p>
+            {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
               <div className="headerSearchItem">
-              {/* <FontAwesomeIcon icon="fa-solid fa-volleyball" /> */}
+              <FontAwesomeIcon icon="fa-solid fa-location-dot" />
                 <input
                   type="text"
-                  placeholder="Where do you wanna rent?"
+                  placeholder="Where you wanna rent?"
                   className="headerSearchInput"
                   onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
               <div className="headerSearchItem">
-                {/* <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" /> */}
+              <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                 <span
                   onClick={() => setOpenDate(!openDate)}
                   className="headerSearchText"
@@ -102,7 +139,7 @@ const Header = ({ type }) => {
                         <button
                           disabled={options.person <= 1}
                           className="optionCounterButton"
-                          onClick={() => handleOption("adult", "d")}
+                          onClick={() => handleOption("person", "d")}
                         >
                           -
                         </button>

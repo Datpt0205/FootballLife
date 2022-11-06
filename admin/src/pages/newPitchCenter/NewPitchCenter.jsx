@@ -13,6 +13,8 @@ const NewPitchCenter = () => {
   const { data, loading, error } = useFetch("/pitches");
   const [pitches, setPitches] = useState([]);
 
+  console.log(data)
+
   const handleChange = (e) => {
     setInfo((pre) => ({ ...pre, [e.target.id]: [e.target.value] }));
   };
@@ -24,8 +26,6 @@ const NewPitchCenter = () => {
     );
     setPitches(value);
   };
-
-  console.log(files);
 
   const handleClick = async (e) => {
     e.preventDefault();

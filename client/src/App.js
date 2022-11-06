@@ -9,6 +9,7 @@ import List from "./pages/list/List";
 import Login from "./pages/login/Login";
 import OnBoarding from "./pages/onBoarding/OnBoarding";
 import Paypal from "./pages/paypal/Paypal";
+import Maps from "./pages/map/Maps";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/pitchCenters/:id" element={<PitchCenter/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/paypal" element={<Paypal/>}/>
+        <Route path="/map" element={<Maps />}/>
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 import "./reserve.css";
 import useFetch from "../../hooks/useFetch";
@@ -69,7 +69,7 @@ const Reserve = ({ setOpen, pitchCenterId }) => {
     <div className="reserve">
       <div className="rContainer">
         <FontAwesomeIcon
-          icon={faCircleXmark}
+          icon={faClose}
           className="rClose"
           onClick={() => setOpen(false)}
         />

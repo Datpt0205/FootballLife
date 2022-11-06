@@ -1,47 +1,47 @@
 export const userInputs = [
     {
-      id: 1,
+      id: "username",
       label: "Username",
       type: "text",
       placeholder: "dat",
     },
+    // {
+    //   id: "name",
+    //   label: "Name",
+    //   type: "text",
+    //   placeholder: "Phung Tat Dat",
+    // },
     {
-      id: 2,
-      label: "Name",
-      type: "text",
-      placeholder: "Phung Tat Dat",
-    },
-    {
-      id: 3,
+      id: "email",
       label: "Email",
       type: "mail",
       placeholder: "dat@gmail.com",
     },
     {
-      id: 4,
+      id: "phone",
       label: "Phone",
       type: "text",
       placeholder: "+84 234 567 89",
     },
     {
-      id: 5,
+      id: "password",
       label: "Password",
       type: "password",
     },
+    // {
+    //   id: "address",
+    //   label: "Address",
+    //   type: "text",
+    //   placeholder: "D36 An Thuong 34, My An, Ngu Hanh Son",
+    // },
     {
-      id: 6,
-      label: "Address",
-      type: "text",
-      placeholder: "D36 An Thuong 34, My An, Ngu Hanh Son",
-    },
-    {
-      id: 7,
+      id: "country",
       label: "Country",
       type: "text",
       placeholder: "Viet Nam",
     },
     {
-      id: 8,
+      id: "city",
       label: "City",
       type: "text",
       placeholder: "Da Nang",
@@ -86,10 +86,10 @@ export const userInputs = [
       placeholder: "One of the best Pitch Center",
     },
     {
-      id: "desc",
-      label: "Description",
+      id: "type",
+      label: "Type",
       type: "text",
-      placeholder: "description",
+      placeholder: "7 people yard"
     },
     {
       id: "cheapestPrice",

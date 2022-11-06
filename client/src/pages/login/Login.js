@@ -1,46 +1,164 @@
-import './Login.css'
-import { useState, useContext } from 'react'
-import {AuthContext} from '../../context/AuthContext'
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
+import "./Login.css";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import logImg from "../../images/log.svg"
+import registerImg from "../../images/register.svg"
 
 const Login = () => {
-    const [credentials, setCredentials] = useState({
-        username: undefined,
-        password: undefined,
-    })
+  const [credentials, setCredentials] = useState({
+    username: undefined,
+    password: undefined,
+  });
 
-    const { loading, error, dispatch } = useContext(AuthContext);
-    
-    const navigate = useNavigate()
+  const { loading, error, dispatch } = useContext(AuthContext);
 
-    const handleChange = (e) => {
-        setCredentials(pre=>({...pre, [e.target.id]: e.target.value}))
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setCredentials((pre) => ({ ...pre, [e.target.id]: e.target.value }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("/auth/login", credentials);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      navigate("/");
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
+  };
 
-    const handleClick = async (e) => {
-        e.preventDefault()
-        dispatch({type:"LOGIN_START"})
-        try{
-            const res = await axios.post("/auth/login", credentials)
-            dispatch({type:"LOGIN_SUCCESS", payload:res.data.details})
-            navigate("/")
-        }catch(err){
-            dispatch({type:"LOGIN_FAILURE", payload:err.response.data})
-        }
-    }
+  const container = document.querySelector(".container");
 
-    return (
-    <div className="login" >
-        <div className="lContainer" >
-            <input type="text" placeholder="username" id="username" onChange={handleChange} className="lInput"></input><br/>
-            <input type="password" placeholder="password" id="password" onChange={handleChange} className="lInput"></input><br/>
-            <button disable={loading} onClick={handleClick} className="lButton">Login</button>
-            {error && <span>{error.message}</span>}
+  const handleSignUp = () => {
+    container.classList.add("sign-up-mode");
+  };
+  const handleSignIn = () => {
+    container.classList.remove("sign-up-mode");
+  };
+
+  return (
+    <div className="container">
+      <div className="forms-container">
+        <div className="signin-signup">
+          <form action="#" className="sign-in-form">
+            <h2 className="title">Sign in</h2>
+            <div className="input-field">
+              <i className="fas fa-user"></i>
+              <input
+                type="text"
+                placeholder="Username"
+                id="username"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-field">
+              <i className="fas fa-lock"></i>
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                onChange={handleChange}
+              />
+            </div>
+            <input
+              button = "true"
+              type="submit"
+              value="Login"
+              className="btn solid"
+              onClick={handleClick}
+            />
+            <p className="social-text">Or Sign in with social platforms</p>
+            <div className="social-media">
+              <a href="#" className="social-icon">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fab fa-google"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+          <form action="#" className="sign-up-form">
+            <h2 className="title">Sign up</h2>
+            <div className="input-field">
+              <i className="fas fa-user"></i>
+              <input type="text" placeholder="Username" />
+            </div>
+            <div className="input-field">
+              <i className="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" />
+            </div>
+            <div className="input-field">
+              <i className="fas fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <input type="submit" className="btn" value="Sign up" />
+            <p className="social-text">Or Sign up with social platforms</p>
+            <div className="social-media">
+              <a href="#" className="social-icon">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fab fa-google"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
         </div>
+      </div>
+
+      <div className="panels-container">
+        <div className="panel left-panel">
+          <div className="content">
+            <h3>Create new account? </h3>
+            <p>
+              If you do not have an account to log in, click the button below to
+              go to the new account registration page!
+            </p>
+            <button
+              className="btn transparent"
+              id="sign-up-btn"
+              onClick={handleSignUp}
+            >
+              Sign up
+            </button>
+          </div>
+          <img src={logImg} className="image" alt="" />
+        </div>
+        <div className="panel right-panel">
+          <div className="content">
+            <h3>Already have an account ?</h3>
+            <p>
+            Click the button below to return to the input page!
+            </p>
+            <button
+              className="btn transparent"
+              id="sign-in-btn"
+              onClick={handleSignIn}
+            >
+              Sign in
+            </button>
+          </div>
+          <img src={registerImg} className="image" alt="" />
+        </div>
+      </div>
     </div>
-    )
+  );
 };
 
-export default Login
-
+export default Login;
