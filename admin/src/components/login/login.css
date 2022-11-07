@@ -60,3 +60,8 @@
     background: -webkit-gradient(linear, left top, right top, from(#fbc02d), to(#f96a8b));
     background: linear-gradient(to right, #fbc02d, #f96a8b);
   }
+  @media (min-width: 1200px) {
+    .login_btn button {
+      width: 370px;
+    }
+  }

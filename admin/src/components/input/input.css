@@ -62,3 +62,9 @@
     width: 100%;
     cursor: pointer;
   }
+
+  @media (min-width: 1200px) {
+    .input label input {
+      width: 370px;
+    }
+  }

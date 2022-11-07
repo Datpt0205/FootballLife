@@ -1,17 +1,22 @@
 import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
+import Login from "./pages/loginLayout/LoginLayout";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import Profile from "./pages/profile/Profile";
+import Profile from "./pages/profile/ProfileLayout";
 import ResetLayout from "./pages/resetLayout/ResetLayout";
+import ActivateLayout from "./pages/activate/ActivateLayout";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
-import { userColumns, pitchCenterColumns, pitchColumns } from "./datatablesource";
+import {
+  userColumns,
+  pitchCenterColumns,
+  pitchColumns,
+} from "./datatablesource";
 import NewPitch from "./pages/newPitch/NewPitch";
 import NewPitchCenter from "./pages/newPitchCenter/NewPitchCenter";
 
@@ -44,9 +49,15 @@ function App() {
             <Route
               path="auth/reset-password/:token"
               exact
-              element = {<ResetLayout/>}
+              element={<ResetLayout />}
             />
-            <Route path="profile"
+            <Route
+              path="/api/auth/activate/:activate_token"
+              exact
+              element={<ActivateLayout />}
+            />
+            <Route
+              path="profile"
               element={
                 <ProtectedRoute>
                   <Profile />
