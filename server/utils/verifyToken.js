@@ -35,3 +35,13 @@ export const verifyAdmin = (req, res, next) => {
   });
 };
 
+const createToken = {
+  activation:(payload) => {
+  return jwt.sign(payload.toJSON(), process.env.JWT, {expiresIn: "5m"})
+}
+}
+
+export default createToken;
+
+
+

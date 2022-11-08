@@ -23,7 +23,9 @@ const connect = () => {
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
+express.urlencoded({extended: true})
 
+//routes
 app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 app.use("/api/pitchCenters", pitchCentersRoute)
