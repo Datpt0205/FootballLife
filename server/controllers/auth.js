@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 import validate from "../utils/validateEmail.js";
-import createToken from "../utils/verifyToken.js"
+import createToken from "../utils/verifyToken.js";
 import sendMail from "../utils/sendMail.js";
 
 export const register = async (req, res, next) => {
@@ -37,9 +37,35 @@ export const register = async (req, res, next) => {
     //send mail
     const url = `http://localhost:3000/api/auth/activate/${activation_token}`;
     sendMail.sendEmailRegister(email, url, "Verify your email!");
-
-    await newUser.save();
     res.status(200).send("Welcome, please check your email!");
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const activate = async (req, res, next) => {
+  try {
+    const { activation_token } = req.body;
+    //verify token
+    const user = jwt.verify(activation_token, process.env.JWT);
+    const { username, email, password, phone, city, country } = user;
+    //check user
+    const check = await User.findOne({ email });
+    if (check)
+      return res.status(400).json({ msg: "This email is already registered!" });
+    //add user
+    const newUser = new User({
+      email,
+      password,
+      username,
+      phone,
+      country,
+      city,
+    });
+    await newUser.save();
+    res
+      .status(200)
+      .send("Your account has been activated, you can sign in now!");
   } catch (err) {
     next(err);
   }

@@ -3,7 +3,7 @@ import "./activateLayout.css";
 
 const ActivateLayout = ({ history }) => {
   const handleClick = () => {
-    history.push("/");
+    history.push("/login");
   };
 
   return (
