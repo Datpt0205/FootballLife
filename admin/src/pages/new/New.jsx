@@ -16,9 +16,6 @@ const New = ({ inputs, title }) => {
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    // data.append("api_key", "748172775484731")
-    // data.append("api_secret", "gcboRyjbNrJSGnNm-OYqkpv_HY0")
-    // data.append("cloud_name", "football")
     data.append("file", file);
     data.append("upload_preset", "upload");
     try {
