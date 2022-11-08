@@ -75,7 +75,7 @@ export const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
-    if (!user) return next(createError(404, "User not found!"));
+    if (!user) return next(createError(404, "This email is not registered!"));
 
     const isPasswordCorrect = await bcrypt.compare(
       req.body.password,
@@ -83,21 +83,64 @@ export const login = async (req, res, next) => {
     );
 
     if (!isPasswordCorrect)
-      return next(createError(400, "Wrong password or username!"));
+      return next(createError(400, "Password incorrect!"));
 
+    //refresh token
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.JWT
     );
 
+    //access_token
     const { password, isAdmin, ...otherDetails } = user._doc;
-
     res
       .cookie("access_token", token, {
         httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000, //24h
       })
       .status(200)
       .json({ details: { ...otherDetails }, isAdmin });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const forgotPassword = async (req, res, next) => {
+  try {
+    //get email
+    const { email } = req.body;
+    //check email
+    const user = await User.findOne({ email });
+    if (!user)
+      return res.status(200).json({ msg: "This email does not exist!" });
+    //create access token
+    const access_token = createToken.access({ id: user._id });
+    //send mail
+    const url = `http://localhost:3000/auth/reset-password/${access_token}`;
+    const username = user.username;
+    sendMail.sendEmailReset(email, url, "Reset your password", username);
+    res
+      .status(200)
+      .json({ msg: "Re-send your password, please check your password!" });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const resetPassword = async (req, res, next) => {
+  try {
+    const { password } = req.body;
+    // hash password
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+
+    // update password
+    await User.findOneAndUpdate(
+      {id: req.user._id},
+      {password: hash},
+    );
+    // reset success
+    res.status(200).json({ msg: "Password was updated successfully." });
   } catch (err) {
     next(err);
   }

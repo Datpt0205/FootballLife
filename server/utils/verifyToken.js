@@ -38,7 +38,10 @@ export const verifyAdmin = (req, res, next) => {
 const createToken = {
   activation:(payload) => {
   return jwt.sign(payload.toJSON(), process.env.JWT, {expiresIn: "5m"})
-}
+  },
+  access:(payload) => {
+    return jwt.sign(payload, process.env.JWT, {expiresIn: "15m"} )
+  },
 }
 
 export default createToken;
