@@ -11,26 +11,46 @@ const Login = () => {
     username: undefined,
     password: undefined,
   });
+  const [email, setEmail] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
 
   const { loading, error, dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setCredentials((pre) => ({ ...pre, [e.target.id]: e.target.value }));
-  };
+  // const handleChange = (e) => {
+  //   setCredentials((pre) => ({ ...pre, [e.target.id]: e.target.value }));
+  // };
 
-  const handleClick = async (e) => {
+  const handleClickSignIn = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", credentials);
+      const res = await axios.post("/auth/login", {username, password});
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
+
+  const handleClickSignUp = async (e) => {
+    e.preventDefault()
+    try{
+
+      const res = await axios.post("/auth/register", {username, password, email})
+      
+      const success = res.status === 201
+
+      if(success) navigate ('/login')
+
+      window.location.reload()
+    }catch(err){
+      console.log(err);
+    }
+  }
 
   const container = document.querySelector(".container");
 
@@ -53,7 +73,7 @@ const Login = () => {
                 type="text"
                 placeholder="Username"
                 id="username"
-                onChange={handleChange}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="input-field">
@@ -62,7 +82,7 @@ const Login = () => {
                 type="password"
                 placeholder="Password"
                 id="password"
-                onChange={handleChange}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <input
@@ -70,7 +90,7 @@ const Login = () => {
               type="submit"
               value="Login"
               className="btn solid"
-              onClick={handleClick}
+              onClick={handleClickSignIn}
             />
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
@@ -92,15 +112,19 @@ const Login = () => {
             <h2 className="title">Sign up</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" id = "username" onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div className="input-field">
               <i className="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className="input-field">
+              <i className="fas fa-lock"></i>
+              <input type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} />
             </div>
             <input type="submit" className="btn" value="Sign up" />
             <p className="social-text">Or Sign up with social platforms</p>
