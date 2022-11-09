@@ -5,6 +5,7 @@ import authRoute from "./routes/auth.js"
 import usersRoute from "./routes/users.js"
 import pitchCentersRoute from "./routes/pitchCenters.js"
 import pitchesRoute from "./routes/pitches.js"
+import uploadRoute from "./routes/upload.js"
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
@@ -23,11 +24,14 @@ const connect = () => {
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
+express.urlencoded({extended: true})
 
+//routes
 app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 app.use("/api/pitchCenters", pitchCentersRoute)
 app.use("/api/pitches", pitchesRoute)
+app.use("/api/upload", uploadRoute)
 
 app.use((err, req, res, next) => {
   const errStatus = err.status || 500;

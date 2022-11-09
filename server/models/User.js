@@ -18,6 +18,7 @@ const UserSchema = new mongoose.Schema(
     },
     img: {
       type: String,
+      default: "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
     },
     city: {
       type: String,

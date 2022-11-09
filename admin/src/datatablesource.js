@@ -1,5 +1,5 @@
 export const userColumns = [
-  { field: "_id", headerName: "ID", width: 70 },
+  // { field: "_id", headerName: "ID", width: 70 },
   {
     field: "user",
     headerName: "User",
@@ -37,7 +37,7 @@ export const userColumns = [
 ];
 
 export const pitchCenterColumns = [
-  { field: "_id", headerName: "ID", width: 200 },
+  // { field: "_id", headerName: "ID", width: 200 },
   {
     field: "name",
     headerName: "Name",
@@ -61,7 +61,7 @@ export const pitchCenterColumns = [
 ];
 
 export const pitchColumns = [
-  { field: "_id", headerName: "ID", width: 70 },
+  // { field: "_id", headerName: "ID", width: 70 },
   {
     field: "title",
     headerName: "Title",
