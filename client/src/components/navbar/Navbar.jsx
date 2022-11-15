@@ -29,7 +29,8 @@ const Navbar = () => {
             />
           </svg>
         </Link>
-        {user ? user.username &&
+        {user ? 
+        // <div>{user.img}</div>
         <div>
           <button className="navButton" onClick={handleLogout} >Log out</button> 
         </div>

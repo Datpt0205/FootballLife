@@ -29,11 +29,11 @@ const Reserve = ({ setOpen, pitchCenterId }) => {
     return dates;
   };
 
-  const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
+  const allDates = getDatesInRange(dates[0].startDate, dates[0].endDate);
 
   const isAvailable = (pitchNumber) => {
     const isFound = pitchNumber.unavailableDates.some((date) =>
-      alldates.includes(new Date(date).getTime())
+      allDates.includes(new Date(date).getTime())
     );
 
     return !isFound;
@@ -56,7 +56,7 @@ const Reserve = ({ setOpen, pitchCenterId }) => {
       await Promise.all(
         selectedPitches.map((pitchId) => {
           const res = axios.put(`/pitches/availability/${pitchId}`, {
-            dates: alldates,
+            dates: allDates,
           });
           return res.data;
         })

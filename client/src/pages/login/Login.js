@@ -3,8 +3,8 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import logImg from "../../images/log.svg"
-import registerImg from "../../images/register.svg"
+import logImg from "../../images/log.svg";
+import registerImg from "../../images/register.svg";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -20,15 +20,15 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // const handleChange = (e) => {
-  //   setCredentials((pre) => ({ ...pre, [e.target.id]: e.target.value }));
-  // };
+  const handleChange = (e) => {
+    setCredentials((pre) => ({ ...pre, [e.target.id]: e.target.value }));
+  };
 
   const handleClickSignIn = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", {username, password});
+      const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
@@ -37,20 +37,23 @@ const Login = () => {
   };
 
   const handleClickSignUp = async (e) => {
-    e.preventDefault()
-    try{
+    e.preventDefault();
+    try {
+      const res = await axios.post("/auth/register", {
+        username,
+        password,
+        email,
+      });
 
-      const res = await axios.post("/auth/register", {username, password, email})
-      
-      const success = res.status === 201
+      const success = res.status === 201;
 
-      if(success) navigate ('/login')
+      if (success) navigate("/login");
 
-      window.location.reload()
-    }catch(err){
+      window.location.reload();
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const container = document.querySelector(".container");
 
@@ -73,7 +76,7 @@ const Login = () => {
                 type="text"
                 placeholder="Username"
                 id="username"
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={handleChange}
               />
             </div>
             <div className="input-field">
@@ -82,11 +85,11 @@ const Login = () => {
                 type="password"
                 placeholder="Password"
                 id="password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handleChange}
               />
             </div>
             <input
-              button = "true"
+              button="true"
               type="submit"
               value="Login"
               className="btn solid"
@@ -112,21 +115,43 @@ const Login = () => {
             <h2 className="title">Sign up</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" id = "username" onChange={(e) => setUsername(e.target.value)} />
+              <input
+                type="text"
+                placeholder="Username"
+                id="rUsername"
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+              <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} />
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
             </div>
-            <input type="submit" className="btn" value="Sign up" />
+            <input
+              type="submit"
+              className="btn"
+              value="Sign up"
+              onClick={handleClickSignUp}
+            />
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">
               <a href="#" className="social-icon">
@@ -167,9 +192,7 @@ const Login = () => {
         <div className="panel right-panel">
           <div className="content">
             <h3>Already have an account ?</h3>
-            <p>
-            Click the button below to return to the input page!
-            </p>
+            <p>Click the button below to return to the input page!</p>
             <button
               className="btn transparent"
               id="sign-in-btn"

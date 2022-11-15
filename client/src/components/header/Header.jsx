@@ -91,12 +91,11 @@ const Header = ({ type }) => {
             </h1>
             <p className="headerDesc">
               Get rewarded for your activities – unlock instant savings of 10% or
-              more with a free Refubooking account
+              more with a free REFU account
             </p>
             {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
               <div className="headerSearchItem">
-              <FontAwesomeIcon icon="fa-solid fa-location-dot" />
                 <input
                   type="text"
                   placeholder="Where you wanna rent?"
