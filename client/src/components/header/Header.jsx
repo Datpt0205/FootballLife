@@ -3,7 +3,8 @@ import {
   faPerson,
   faFootball,
   faMap,
-  faUserFriends
+  faUserFriends,
+  faCloudSunRain
 } from "@fortawesome/free-solid-svg-icons";
 import {FaFootballBall} from "react-icons/fa"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -87,6 +88,7 @@ const Header = ({ type }) => {
             <span button onClick = {handleClickMatch}>Matches</span>
           </div>
           <div className="headerListItem">
+            <FontAwesomeIcon icon={faCloudSunRain} />
             <span button onClick = {handleClickWeather}>Weather</span>
           </div>
         </div>

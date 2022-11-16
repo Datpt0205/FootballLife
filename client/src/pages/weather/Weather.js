@@ -319,7 +319,7 @@ function Weather() {
                         />
                         <p style={{ padding: '20px' }}>
                           Don't worry, if you don't know what to search for, try:
-                          Dhaka, Canada or maybe USA.
+                          Hanoi, London or maybe Canada.
                         </p>
                       </>
                     )}
