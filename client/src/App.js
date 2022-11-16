@@ -10,6 +10,7 @@ import Login from "./pages/login/Login";
 import OnBoarding from "./pages/onBoarding/OnBoarding";
 import Paypal from "./pages/paypal/Paypal";
 import Maps from "./pages/map/Maps";
+import Weather from "./pages/weather/Weather";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/paypal" element={<Paypal/>}/>
         <Route path="/map" element={<Maps />}/>
+        <Route path="/weather" element={<Weather />}/>
       </Routes>
     </BrowserRouter>
   );

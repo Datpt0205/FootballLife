@@ -62,6 +62,9 @@ const Header = ({ type }) => {
   const handleClickMatch = () => {
     navigate("/match")
   }
+  const handleClickWeather = () => {
+    navigate("/weather")
+  }
 
   return (
     <div className="header">
@@ -82,6 +85,9 @@ const Header = ({ type }) => {
           <div className="headerListItem">
             <FontAwesomeIcon icon={faUserFriends} />
             <span button onClick = {handleClickMatch}>Matches</span>
+          </div>
+          <div className="headerListItem">
+            <span button onClick = {handleClickWeather}>Weather</span>
           </div>
         </div>
         {type !== "list" && (

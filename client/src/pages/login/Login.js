@@ -110,6 +110,7 @@ const Login = () => {
                 <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
+            <a href="#" className="social-text">Forgot password?</a>
           </form>
           <form action="#" className="sign-up-form">
             <h2 className="title">Sign up</h2>
