@@ -1,0 +1,62 @@
+form{
+    display: block;
+}
+.input {
+    margin: 1em 0;
+    
+  }
+
+#username{
+    display: block;
+    margin-bottom: 10px;
+}
+
+#email{
+    display: block;
+    margin-bottom: 10px;
+}
+#password{
+    display: block;
+    margin-bottom: 10px;
+}
+#cf_password{
+    display: block;
+    margin-bottom: 10px;
+}
+  
+  .input label {
+    position: relative;
+    font-size: 1rem;
+  }
+  
+  .input label input {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    background-color: #544f5f;
+    padding: 1em;
+    border-radius: 5px;
+    width: 370px;
+    outline: none;
+    font-size: 1rem;
+    border: 2px solid transparent;
+  }
+  
+  .input label input:focus {
+    border: 2px solid #1759b6;
+  }
+  
+  .toast-failed {
+    background: #2632de !important;
+    color: #fff;
+  }
+  
+  .toast-success {
+    background: #2632de !important;
+    color: #fff;
+  }
+
+  @media (min-width: 1200px) {
+    .input label input {
+      width: 370px;
+    }
+  }

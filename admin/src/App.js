@@ -1,11 +1,11 @@
 import Home from "./pages/home/Home";
-import Login from "./pages/loginLayout/LoginLayout";
+import Auth from "./pages/authLayout/AuthLayout";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import Profile from "./pages/profile/ProfileLayout";
 import ResetLayout from "./pages/resetLayout/ResetLayout";
-import ActivateLayout from "./pages/activate/ActivateLayout";
+import ActivateLayout from "./pages/activateLayout/ActivateLayout";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
@@ -22,12 +22,13 @@ import NewPitchCenter from "./pages/newPitchCenter/NewPitchCenter";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+  // const isLoggedIn = false;
 
   const ProtectedRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
 
     if (!user) {
-      return <Navigate to="/login" />;
+      return <Navigate to="/auth" />;
     }
     return children;
   };
@@ -37,7 +38,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route path="login" element={<Login />} />
+            <Route path="auth" element={<Auth />} />
             <Route
               index
               element={
@@ -52,7 +53,7 @@ function App() {
               element={<ResetLayout />}
             />
             <Route
-              path="/api/auth/activate/:activate_token"
+              path="auth/activate/:activate_token"
               exact
               element={<ActivateLayout />}
             />
