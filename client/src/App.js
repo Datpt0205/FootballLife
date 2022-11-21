@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/pitchCenters" element={<List />} />
         <Route path="/pitchCenters/:id" element={<PitchCenter />} />
-        <Route path="/auth" element={<AuthLayout/>} />
+        <Route path="/login" element={<AuthLayout/>} />
         <Route path="/paypal" element={<Paypal />} />
         <Route path="/map" element={<Maps />} />
         <Route path="/weather" element={<Weather />} />

@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+    newUser,
     updateUser, 
     deleteUser, 
     getUser, 
@@ -21,6 +22,8 @@ const router = express.Router();
 //   res.send("hello admin, you are logged in and you can delete all accounts")
 // })
 
+//newUser
+router.post('./newUser', newUser)
 //Update
 router.put('/:id', verifyUser, updateUser);
 
