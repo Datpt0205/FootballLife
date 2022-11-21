@@ -14,8 +14,8 @@ const Navbar = () => {
 
   const handleLogout = () => {
       localStorage.removeItem("user");
-      window.location.href= '/'
-    }
+      window.location.reload()
+  }
 
   return (
     <div className="navbar">
