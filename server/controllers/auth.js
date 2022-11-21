@@ -45,12 +45,73 @@ export const register = async (req, res, next) => {
   }
 };
 
+// export const login = async (req, res, next) => {
+//   try {
+//     // get cred
+//     const { email, password } = req.body;
+
+//     // check email
+//     const user = await User.findOne({ email });
+//     if (!user)
+//       return res
+//         .status(400)
+//         .json({ msg: "This email is not registered in our system." });
+
+//     // check password
+//     const isMatch = bcrypt.compare(password, user.password);
+//     if (!isMatch)
+//       return res.status(400).json({ msg: "This password is incorrect." });
+
+//     // refresh token
+//     const rf_token = createToken.refresh({ id: user._id });
+//     res.cookie("_apprftoken", rf_token, {
+//       httpOnly: true,
+//       path: "/api/auth/access",
+//       maxAge: 24 * 60 * 60 * 1000, // 24h
+//     });
+
+//     // signing success
+//     res.status(200).json({ msg: "Signing success" });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
+export const login = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) return next(createError(404, "User not found!"));
+
+    const isPasswordCorrect = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+    if (!isPasswordCorrect)
+      return next(createError(400, "Wrong password or username!"));
+
+    const token = jwt.sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.JWT
+    );
+
+    const { password, isAdmin, ...otherDetails } = user._doc;
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .json({ details: { ...otherDetails }, isAdmin });
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const activate = async (req, res, next) => {
   try {
     const { activation_token } = req.body;
     //verify token
-    const user = jwt.verify(activation_token, process.env.JWT);
-    const { username, email, password, phone, city, country } = user;
+    const user = jwt.verify(activation_token, process.env.ACTIVATION_TOKEN);
+    const { username, email, password } = user;
     //check user
     const check = await User.findOne({ email });
     if (check)
@@ -60,46 +121,11 @@ export const activate = async (req, res, next) => {
       email,
       password,
       username,
-      phone,
-      country,
-      city,
     });
     await newUser.save();
     res
       .status(200)
       .send("Your account has been activated, you can sign in now!");
-  } catch (err) {
-    next(err);
-  }
-};
-
-export const login = async (req, res, next) => {
-  try {
-    // get cred
-    const { email, password } = req.body;
-
-    // check email
-    const user = await User.findOne({ email });
-    if (!user)
-      return res
-        .status(400)
-        .json({ msg: "This email is not registered in our system." });
-
-    // check password
-    const isMatch = bcrypt.compare(password, user.password);
-    if (!isMatch)
-      return res.status(400).json({ msg: "This password is incorrect." });
-
-    // refresh token
-    const rf_token = createToken.refresh({ id: user._id });
-    res.cookie("_apprftoken", rf_token, {
-      httpOnly: true,
-      path: "/api/auth/access",
-      maxAge: 24 * 60 * 60 * 1000, // 24h
-    });
-
-    // signing success
-    res.status(200).json({ msg: "Signing success" });
   } catch (err) {
     next(err);
   }
@@ -163,7 +189,7 @@ export const resetPassword = async (req, res, next) => {
 
 export const logout = async (req, res, next) => {
   try {
-    res.clearCookie("_apprftoken");
+    res.clearCookie("access_token");
     res.status(200).json({ msg: "Sign out success." });
   } catch (err) {
     next(err);

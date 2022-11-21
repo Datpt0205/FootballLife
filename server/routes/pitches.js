@@ -16,10 +16,10 @@ router.post('/:pitchCenterid', verifyAdmin, createPitch);
 
 //Update
 router.put('/:id', verifyAdmin, updatePitch);
-router.put('availability/:id', updatePitchAvailability);
+router.put('/availability/:id', updatePitchAvailability);
 
 //delete
-router.delete('/:id', verifyAdmin, deletePitch);
+router.delete('/:id/pitchCenterid', verifyAdmin, deletePitch);
 
 //get
 router.get('/:id', getPitch);

@@ -1,8 +1,5 @@
-import Input from "../input/Input";
 import { AiFillCamera } from "react-icons/ai";
 import { useRef, useState } from "react";
-import { MdVisibility } from "react-icons/md";
-import { MdVisibilityOff } from "react-icons/md";
 import "./profile.css";
 
 const Profile = () => {
@@ -35,17 +32,15 @@ const Profile = () => {
     </div>
       <form className="profile_input">
         <div className="profile_input-form">
-          <Input type="text" text="Name" />
-          <Input type="text" text="Email" />
-          <Input
-            type={visible ? "text" : "password"}
-            icon={visible ? <MdVisibility /> : <MdVisibilityOff />}
+          <input type="text" text="Name" />
+          <input type="text" text="Email" />
+          <input
+            type="password"
             text="Password"
             handleClick={handleClick}
           />
-          <Input
-            type={visible ? "text" : "password"}
-            icon={visible ? <MdVisibility /> : <MdVisibilityOff />}
+          <input
+            type="password"
             text="Confirm Password"
             handleClick={handleClick}
           />

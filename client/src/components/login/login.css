@@ -1,0 +1,76 @@
+#email{
+  display: block;
+  margin-bottom: 10px;
+}
+#password{
+  display: block;
+  margin-bottom: 10px;
+}
+
+.login_btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  
+  .login_btn button {
+    margin: 0.5em 0;
+    padding: 1em;
+    border-radius: 5px;
+    border: none;
+    width: 370px;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#003580));
+    background: linear-gradient(to right, #2632de, #012b66);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .login_btn button svg {
+    font-size: 1.1rem;
+    margin-left: 10px;
+  }
+  
+  .login_btn button:hover {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    background: -webkit-gradient(linear, right top, left top, from(#ffffff), to(#003580));
+    background: linear-gradient(to left, #2632de, #012b66);
+  }
+  
+  .login_btn .btn-alt {
+    background: -webkit-gradient(linear, right top, left top, from(#ffffff), to(#003580));
+    background: linear-gradient(to left, #2632de, #012b66);
+  }
+  
+  .login_btn .btn-alt:hover {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#003580));
+    background: linear-gradient(to right, #2632de, #012b66);
+  }
+  @media (min-width: 1200px) {
+    .login_btn button {
+      width: 370px;
+    }
+  }

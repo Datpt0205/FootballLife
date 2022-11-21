@@ -32,8 +32,8 @@ const ActivateLayout = ({ history }) => {
   }, [activation_token]);
 
   const handleClick = () => {
-    // history.push("/login");
-    navigate('/auth')
+    history.push("/login");
+    // navigate('/login')
   };
 
   return (

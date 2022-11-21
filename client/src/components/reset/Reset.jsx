@@ -10,7 +10,7 @@ const Reset = () => {
   return (
     <form>
       <input
-        type="password"
+        type = "password"
         text="Password"
         handleClick={handleClick}
       />
@@ -20,7 +20,7 @@ const Reset = () => {
         handleClick={handleClick}
       />
       <div className="login_btn">
-        <button>reset</button>
+        <button type = "submit">reset</button>
       </div>
     </form>
   );

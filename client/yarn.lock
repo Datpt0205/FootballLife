@@ -6859,6 +6859,11 @@ p-retry@^4.5.0:
     "@types/retry" "0.12.0"
     retry "^0.13.1"
 
+p-sleep@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/p-sleep/-/p-sleep-1.1.0.tgz#a6c9333059b5103c3c0e46bcbba95a1f7969095b"
+  integrity sha512-bwP3GKZirBUYMtiUuBrheLUQdRXVeE/pmHOaLpNJzNfAD4b5AjDn6l823brXcQFade4G/g7GMNQ3KV86E8EaEw==
+
 p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
@@ -7926,6 +7931,13 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-tinder-card@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/react-tinder-card/-/react-tinder-card-1.6.2.tgz#d7ea67691973293ed9e3687fc2763003389c7baa"
+  integrity sha512-jtdgINFQ4bNA7YoqnoS4Z603mYCtrRHVc+K4R6JHuUzjsRsgO7hEooCUXz++HF5WE+fkOHjkuc22w+rxUlkMJw==
+  dependencies:
+    p-sleep "^1.1.0"
 
 react-toastify@^9.1.1:
   version "9.1.1"

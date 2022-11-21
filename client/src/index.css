@@ -62,7 +62,7 @@ color: rgba(255,255,255);
   border: solid rgb(48,48,48)
  }
 
- :root {
+ /* :root {
     --yellow: #f5c32c;
     --orange: #fca61f;
     --black: #242d49;
@@ -94,6 +94,6 @@ color: rgba(255,255,255);
     --subHeadingColor: rgb(17, 17, 17);
     --tempColor: #9ee4e6;
     --statsColor: #e0e5ef;
-  }
+  } */
   
   

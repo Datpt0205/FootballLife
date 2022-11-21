@@ -12,6 +12,7 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
+import axios from "axios";
 import {
   userColumns,
   pitchCenterColumns,
@@ -22,7 +23,6 @@ import NewPitchCenter from "./pages/newPitchCenter/NewPitchCenter";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-  // const isLoggedIn = false;
 
   const ProtectedRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
