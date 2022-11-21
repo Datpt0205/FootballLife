@@ -6,7 +6,6 @@ import {
   faUserFriends,
   faCloudSunRain
 } from "@fortawesome/free-solid-svg-icons";
-import {FaFootballBall} from "react-icons/fa"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import "./header.css";
@@ -77,19 +76,19 @@ const Header = ({ type }) => {
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faFootball}  />
-            <span button onClick={handleClickBook}>Booking</span>
+            <span onClick={handleClickBook}>Booking</span>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faMap} />
-            <span button onClick = {handleClickMap}>Map</span>
+            <span onClick = {handleClickMap}>Map</span>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faUserFriends} />
-            <span button onClick = {handleClickMatch}>Matches</span>
+            <span onClick = {handleClickMatch}>Matches</span>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faCloudSunRain} />
-            <span button onClick = {handleClickWeather}>Weather</span>
+            <span onClick = {handleClickWeather}>Weather</span>
           </div>
         </div>
         {type !== "list" && (

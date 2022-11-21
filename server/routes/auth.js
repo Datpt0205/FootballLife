@@ -16,7 +16,7 @@ router.post("/reset_password", auth, resetPassword);
 
 router.get("/logout", logout);
 
-router.post("/google_singing", googleSigning)
+router.post("/google_signing", googleSigning)
 
 router.post("/access", access);
 
