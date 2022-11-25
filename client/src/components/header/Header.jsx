@@ -4,7 +4,8 @@ import {
   faFootball,
   faMap,
   faUserFriends,
-  faCloudSunRain
+  faCloudSunRain,
+  faMailBulk
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -65,6 +66,9 @@ const Header = ({ type }) => {
   const handleClickWeather = () => {
     navigate("/weather")
   }
+  const handleClickContact = () => {
+    navigate("/contact")
+  }
 
   return (
     <div className="header">
@@ -89,6 +93,10 @@ const Header = ({ type }) => {
           <div className="headerListItem">
             <FontAwesomeIcon icon={faCloudSunRain} />
             <span onClick = {handleClickWeather}>Weather</span>
+          </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faMailBulk} />
+            <span onClick = {handleClickContact}>Contact Us</span>
           </div>
         </div>
         {type !== "list" && (

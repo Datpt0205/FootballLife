@@ -6,7 +6,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import GoogleLogin from "react-google-login";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 const LoginLayout = () => {
   const [credentials, setCredentials] = useState({
@@ -24,12 +24,22 @@ const LoginLayout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
     try {
-      dispatch({ type: "LOGIN_START" });
       const res = await axios.post("/auth/login", credentials);
+      if (res.data.isAdmin) {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
-    } catch (err) {
+    }else{
+      toast("You are not allowed to login! Please try again.", {
+        className: "toast-failed",
+        bodyClassName: "toast-failed",
+      });
+      dispatch({
+        type: "LOGIN_FAILURE",
+        payload: { message: "You are not allowed!" },
+      });
+    }} catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
@@ -55,6 +65,8 @@ const LoginLayout = () => {
   };
 
   return (
+    <>
+    <ToastContainer />
     <form className="login" onSubmit={handleSubmit}>
       <div className="input">
         <label>
@@ -95,6 +107,7 @@ const LoginLayout = () => {
         </label>
       </div>
     </form>
+    </>
   );
 };
 

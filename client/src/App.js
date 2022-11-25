@@ -7,7 +7,8 @@ import Paypal from "./pages/paypal/Paypal";
 import Maps from "./pages/map/Maps";
 import Weather from "./pages/weather/Weather";
 import ActivateLayout from "./pages/activateLayout/ActivateLayout";
-
+import ResetLayout from "./pages/resetLayout/ResetLayout";
+import Contact from "./pages/contact/Contact";
 
 function App() {
   return (
@@ -16,16 +17,21 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/pitchCenters" element={<List />} />
         <Route path="/pitchCenters/:id" element={<PitchCenter />} />
-        <Route path="/login" element={<AuthLayout/>} />
+        <Route path="/login" element={<AuthLayout />} />
         <Route path="/paypal" element={<Paypal />} />
         <Route path="/map" element={<Maps />} />
         <Route path="/weather" element={<Weather />} />
+        {/* <Route path="/contact" element={<Contact />} /> */}
         <Route
           path="api/auth/activate/:activation_token"
           exact
           element={<ActivateLayout />}
         />
-        {/* <Route path="/match" element={<Match/>}/> */}
+        <Route
+          path="/auth/reset-password/:token"
+          exact
+          element={<ResetLayout />}
+        />
       </Routes>
     </BrowserRouter>
   );

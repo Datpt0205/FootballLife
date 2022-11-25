@@ -23,7 +23,7 @@ const router = express.Router();
 // })
 
 //newUser
-router.post('./newUser', newUser)
+router.post('/newUser', newUser)
 //Update
 router.put('/:id', verifyUser, updateUser);
 
