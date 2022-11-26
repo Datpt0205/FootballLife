@@ -68,6 +68,11 @@ export const pitchColumns = [
     width: 230,
   },
   {
+    field: "type",
+    headerName: "Type",
+    width: 230,
+  },
+  {
     field: "description",
     headerName: "Description",
     width: 200,
