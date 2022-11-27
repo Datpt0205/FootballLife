@@ -86,12 +86,6 @@ export const userInputs = [
       placeholder: "One of the best Pitch Center",
     },
     {
-      id: "type",
-      label: "Type",
-      type: "text",
-      placeholder: "7 people yard"
-    },
-    {
       id: "cheapestPrice",
       label: "Price",
       type: "text",
@@ -104,7 +98,7 @@ export const userInputs = [
       id: "title",
       label: "Title",
       type: "text",
-      placeholder: "5 people yard",
+      placeholder: "Artificial turf pitch",
     },
     {
       id: "type",
