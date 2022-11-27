@@ -13,6 +13,7 @@ const NewPitch = () => {
   const [pitches, setPitches] = useState([]);
 
   const { data, loading, error } = useFetch("/pitchCenters");
+  console.log(data)
 
   const handleChange = (e) => {
     setInfo((pre) => ({ ...pre, [e.target.id]: [e.target.value] }));
@@ -23,7 +24,9 @@ const NewPitch = () => {
     const pitchNumbers = pitches.split(",").map((pitch) => ({ number: pitch }));
     try {
       await axios.post(`/pitches/${pitchCenterId}`, { ...info, pitchNumbers });
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -64,12 +67,13 @@ const NewPitch = () => {
                   onChange={(e) => setPitchCenterId(e.target.value)}
                 >
                   {loading
-                    ? "Loading"
+                    ? "loading"
                     : data &&
                       data.map((pitchCenter) => {
+                        return(
                         <option key ={pitchCenter._id} value={pitchCenter._id}>
                           {pitchCenter.name}
-                        </option>;
+                        </option>)
                       })}
                 </select>
               </div>

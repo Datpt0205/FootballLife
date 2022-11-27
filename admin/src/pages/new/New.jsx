@@ -31,11 +31,11 @@ const New = ({ inputs, title }) => {
       };
 
       await axios.post("/users/createUser", newUser);
+      alert("Create new user successfully!");
     } catch (err) {
       console.log(err);
     }
   };
-
 
   return (
     <div className="new">
@@ -81,6 +81,13 @@ const New = ({ inputs, title }) => {
                   />
                 </div>
               ))}
+              <div className="formInput">
+                <label>isAdmin</label>
+                <select id="isAdmin" onChange={handleChange}>
+                  <option value={false}>No</option>
+                  <option value={true}>Yes</option>
+                </select>
+              </div>
               <button onClick={handleClick}>Send</button>
             </form>
           </div>

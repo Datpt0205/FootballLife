@@ -4,6 +4,7 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import {Link} from 'react-router-dom'
 
 const Widget = ({ type }) => {
   let data;
@@ -17,7 +18,7 @@ const Widget = ({ type }) => {
       data = {
         title: "USERS",
         isMoney: false,
-        link: "See all users",
+        link: (<Link to="/users"> See all users</Link>),
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -45,11 +46,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+    case "pitch center":
       data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
+        title: "PITCH CENTERS",
+        isMoney: false,
+        link: (<Link to="/pitchCenters"> See all details</Link>),
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -58,11 +59,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
+    case "pitch":
       data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
+        title: "PITCHES",
+        isMoney: false,
+        link: (<Link to="/pitches"> See all details</Link>),
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"

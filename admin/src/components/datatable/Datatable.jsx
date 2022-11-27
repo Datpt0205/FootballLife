@@ -5,12 +5,17 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch"
 import axios from "axios";
+import { Box, Typography, useTheme } from "@mui/material";
+import { tokens } from "../../components/theme";
 
 const Datatable = ({columns}) => {
 
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-  const [list, setList] = useState("");
+  const [list, setList] = useState([]);
   const {data, loading, error} = useFetch(`/${path}`);
   const [query, setQuery] = useState("");
 
@@ -37,7 +42,7 @@ const Datatable = ({columns}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/profile" style={{ textDecoration: "none" }}>
+            <Link to="/users/test" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -59,6 +64,36 @@ const Datatable = ({columns}) => {
           Add New
         </Link>
       </div>
+      <Box m="20px">
+      <Box
+        m="40px 0 0 0"
+        height="75vh"
+        sx={{
+          "& .MuiDataGrid-root": {
+            border: "none",
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: "none",
+          },
+          "& .name-column--cell": {
+            color: colors.greenAccent[300],
+          },
+          "& .MuiDataGrid-columnHeaders": {
+            backgroundColor: colors.blueAccent[700],
+            borderBottom: "none",
+          },
+          "& .MuiDataGrid-virtualScroller": {
+            backgroundColor: colors.primary[400],
+          },
+          "& .MuiDataGrid-footerContainer": {
+            borderTop: "none",
+            backgroundColor: colors.blueAccent[700],
+          },
+          "& .MuiCheckbox-root": {
+            color: `${colors.greenAccent[200]} !important`,
+          },
+        }}
+      >
       <DataGrid
         // dataSearch = {search(data)}
         className="datagrid"
@@ -69,6 +104,8 @@ const Datatable = ({columns}) => {
         checkboxSelection
         getRowId={(row)=>row._id}
       />
+      </Box>
+      </Box>
     </div>
   );
 };

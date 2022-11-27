@@ -107,6 +107,12 @@ export const userInputs = [
       placeholder: "5 people yard",
     },
     {
+      id: "type",
+      label: "Type",
+      type: "type",
+      placeholder: "5",
+    },
+    {
       id: "description",
       label: "Description",
       type: "text",

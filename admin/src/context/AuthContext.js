@@ -35,6 +35,21 @@ const AuthReducer = (state, action) => {
         loading: false,
         error: null,
       };
+      case "GET_TOKEN":
+      return {
+        ...state,
+        token: action.payload,
+      };
+    case "GET_USER":
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case "UPDATE_AVATAR":
+      return {
+        ...state,
+        user: [{ avatar: action.payload }],
+      };
     default:
       return state;
   }

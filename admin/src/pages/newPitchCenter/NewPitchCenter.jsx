@@ -117,9 +117,11 @@ const NewPitchCenter = () => {
                     ? "Loading"
                     : data &&
                       data.map((pitch) => {
+                        return(
                         <option key={pitch._id} value={pitch._id}>
                           {pitch.title}
-                        </option>;
+                        </option>
+                        )
                       })}
                 </select>
               </div>
