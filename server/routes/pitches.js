@@ -22,7 +22,7 @@ router.put('/availability/:id', updatePitchAvailability);
 router.delete('/:id', verifyAdmin, deletePitch);
 
 //get
-router.get('/:id', getPitch);
+router.get('/find/:id', getPitch);
 
 //get all
 router.get('/', getPitches);

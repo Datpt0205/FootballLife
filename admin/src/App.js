@@ -20,6 +20,8 @@ import {
 } from "./datatablesource";
 import NewPitch from "./pages/newPitch/NewPitch";
 import NewPitchCenter from "./pages/newPitchCenter/NewPitchCenter";
+import PitchCenterInfo from "./pages/pitchCenterInfo/PitchCenterInfo";
+import PitchInfo from "./pages/pitchInfo/PitchInfo";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -101,10 +103,10 @@ function App() {
                 }
               />
               <Route
-                path=":productId"
+                path=":pitchCenterid"
                 element={
                   <ProtectedRoute>
-                    <Single />
+                    <PitchCenterInfo />
                   </ProtectedRoute>
                 }
               />
@@ -127,10 +129,10 @@ function App() {
                 }
               />
               <Route
-                path=":productId"
+                path=":pitchId"
                 element={
                   <ProtectedRoute>
-                    <Single />
+                    <PitchInfo />
                   </ProtectedRoute>
                 }
               />

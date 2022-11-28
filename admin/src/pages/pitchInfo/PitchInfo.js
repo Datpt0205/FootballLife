@@ -1,4 +1,4 @@
-import "./single.scss";
+import "./pitchInfo.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
@@ -6,11 +6,11 @@ import List from "../../components/table/Table";
 import {useLocation} from 'react-router-dom'
 import useFetch from "../../hooks/useFetch";
 
-const Single = ({item}) => {
+const PitchInfo = () => {
 
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const {data, loading, error } = useFetch(`/users/find/${id}`)
+  const {data, loading, error } = useFetch(`/pitches/find/${id}`)
   
   return (
     <div className="single">
@@ -22,40 +22,31 @@ const Single = ({item}) => {
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
-              <img
-                src = {data.img}
-                className = "itemImg"
-              />
               <div className="details">
-                <h1 className="itemTitle">{data.username}</h1>
+                <h1 className="itemTitle">{data.title}</h1>
                 <div className="detailItem">
-                  <span className="itemKey">Email:</span>
-                  <span className="itemValue">{data.email}</span>
+                  <span className="itemKey">Type:</span>
+                  <span className="itemValue">{data.type}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Phone:</span>
-                  <span className="itemValue">{data.phone}</span>
+                  <span className="itemKey">Price:</span>
+                  <span className="itemValue">{data.price}$</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">City:</span>
-                  <span className="itemValue">
-                      {data.city}
-                  </span>
+                  <span className="itemKey">Description:</span>
+                  <span className="itemValue">{data.description}</span>
                 </div>
-                <div className="detailItem">
-                  <span className="itemKey">Country:</span>
-                  <span className="itemValue">{data.country}</span>
-                </div>
+                {/* <div className="detailItem">
+                  <span className="itemKey">Pitch number:</span>
+                  <span className="itemValue">{data.pitchNumbers}</span>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
-        <div className="right">
-            <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
-          </div>
       </div>
     </div>
   );
 };
 
-export default Single;
+export default PitchInfo;

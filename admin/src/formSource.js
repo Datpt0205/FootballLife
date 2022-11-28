@@ -60,6 +60,11 @@ export const userInputs = [
       type: "password",
     },
     {
+      id: "confirmPassword",
+      label: "Confirm Password",
+      type: "password",
+    },
+    {
       id: "country",
       label: "Country",
       type: "text",
