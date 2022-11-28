@@ -16,7 +16,7 @@ const NewPitchCenter = () => {
   console.log(data)
 
   const handleChange = (e) => {
-    setInfo((pre) => ({ ...pre, [e.target.id]: [e.target.value] }));
+    setInfo((pre) => ({ ...pre, [e.target.id]: e.target.value }));
   };
 
   const handleSelect = (e) => {
@@ -39,7 +39,7 @@ const NewPitchCenter = () => {
           data.append("file", file)
           data.append("upload_preset", "upload")
           const uploadRes = await axios.post(
-            "https://api.cloudinary.com/v1_1/refu/image/upload",
+            "https://api.cloudinary.com/v1_1/football/image/upload",
             data
           );
           const { url } = uploadRes.data;
@@ -54,6 +54,7 @@ const NewPitchCenter = () => {
       };
 
       await axios.post("/pitchCenters", newPitchCenter);
+      alert("Create new pitch center successfully!")
     } catch (err) {
       console.log(err);
     }
@@ -112,7 +113,7 @@ const NewPitchCenter = () => {
               </div>
               <div className="selectPitches">
                 <label>Pitches</label>
-                <select id="pitches" multiple onChange={handleSelect}>
+                <select id="pitches" onChange={handleSelect}>
                   {loading
                     ? "Loading"
                     : data &&

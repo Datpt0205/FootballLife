@@ -5,12 +5,6 @@ export const userInputs = [
       type: "text",
       placeholder: "dat",
     },
-    // {
-    //   id: "name",
-    //   label: "Name",
-    //   type: "text",
-    //   placeholder: "Phung Tat Dat",
-    // },
     {
       id: "email",
       label: "Email",
@@ -28,12 +22,43 @@ export const userInputs = [
       label: "Password",
       type: "password",
     },
-    // {
-    //   id: "address",
-    //   label: "Address",
-    //   type: "text",
-    //   placeholder: "D36 An Thuong 34, My An, Ngu Hanh Son",
-    // },
+    {
+      id: "country",
+      label: "Country",
+      type: "text",
+      placeholder: "Viet Nam",
+    },
+    {
+      id: "city",
+      label: "City",
+      type: "text",
+      placeholder: "Da Nang",
+    },
+  ];
+  export const updateInputs = [
+    {
+      id: "username",
+      label: "Username",
+      type: "text",
+      placeholder: "dat",
+    },
+    {
+      id: "email",
+      label: "Email",
+      type: "mail",
+      placeholder: "dat@gmail.com",
+    },
+    {
+      id: "phone",
+      label: "Phone",
+      type: "text",
+      placeholder: "+84 234 567 89",
+    },
+    {
+      id: "password",
+      label: "Password",
+      type: "password",
+    },
     {
       id: "country",
       label: "Country",

@@ -10,15 +10,12 @@ const PitchSchema = new mongoose.Schema({
         require: true,
     },
     type: {
-        type: Number,
+        type: String,
         require: true,
     },
     description:{
         type:String,
         require: true,
-    },
-    photos: {
-        type: [String],
     },
     pitchNumbers:[{number:Number, unavailableDates: [{ type: Date }]}]
 },

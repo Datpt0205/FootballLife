@@ -8,7 +8,7 @@ import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 
 const NewPitch = () => {
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState("");
   const [pitchCenterId, setPitchCenterId] = useState(undefined);
   const [pitches, setPitches] = useState([]);
 
@@ -16,7 +16,7 @@ const NewPitch = () => {
   console.log(data)
 
   const handleChange = (e) => {
-    setInfo((pre) => ({ ...pre, [e.target.id]: [e.target.value] }));
+    setInfo((pre) => ({ ...pre, [e.target.id]: e.target.value }));
   };
 
   const handleClick = async (e) => {
@@ -24,6 +24,7 @@ const NewPitch = () => {
     const pitchNumbers = pitches.split(",").map((pitch) => ({ number: pitch }));
     try {
       await axios.post(`/pitches/${pitchCenterId}`, { ...info, pitchNumbers });
+      alert("Create new pitch successfully!")
     } catch (err) {
       console.log(err);
     }
