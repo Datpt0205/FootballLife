@@ -5,12 +5,15 @@ import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
 import {useLocation} from 'react-router-dom'
 import useFetch from "../../hooks/useFetch";
+import UpdatePitchCenter from "../../components/updatePitchCenter/UpdatePitchCenter"
+import { useState } from "react";
 
 const PitchCenterInfo = ({item}) => {
 
-  const location = useLocation();
-  const id = location.pathname.split("/")[2];
-  const {data, loading, error } = useFetch(`/pitchCenters/find/${id}`)
+    const [openUpdate, setOpenUpdate] = useState(false);
+    const location = useLocation();
+    const id = location.pathname.split("/")[2];
+    const { data, loading, error } = useFetch(`/pitchCenters/find/${id}`);
   
   return (
     <div className="single">
@@ -19,7 +22,7 @@ const PitchCenterInfo = ({item}) => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+            <div className="editButton" onClick={() => setOpenUpdate(true)}>Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
               <img
@@ -56,6 +59,13 @@ const PitchCenterInfo = ({item}) => {
             </div>
           </div>
         </div>
+        {openUpdate &&
+        <div className="bottom">
+          <div className="updateInfo">
+           <UpdatePitchCenter setOpenUpdate={setOpenUpdate} />
+          </div>
+        </div>
+        }
       </div>
     </div>
   );

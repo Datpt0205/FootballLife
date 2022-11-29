@@ -3,15 +3,17 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
-import {useLocation} from 'react-router-dom'
+import { useLocation } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import UpdatePitch from "../../components/updatePitch/UpdatePitch";
+import { useState } from "react";
 
 const PitchInfo = () => {
-
+  const [openUpdate, setOpenUpdate] = useState(false);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const {data, loading, error } = useFetch(`/pitches/find/${id}`)
-  
+  const { data, loading, error } = useFetch(`/pitches/find/${id}`);
+
   return (
     <div className="single">
       <Sidebar />
@@ -19,7 +21,7 @@ const PitchInfo = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+            <div className="editButton" onClick={() => setOpenUpdate(true)}>Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
               <div className="details">
@@ -36,14 +38,17 @@ const PitchInfo = () => {
                   <span className="itemKey">Description:</span>
                   <span className="itemValue">{data.description}</span>
                 </div>
-                {/* <div className="detailItem">
-                  <span className="itemKey">Pitch number:</span>
-                  <span className="itemValue">{data.pitchNumbers}</span>
-                </div> */}
               </div>
             </div>
           </div>
         </div>
+        {openUpdate && (
+          <div className="bottom">
+            <div className="updateInfo">
+              <UpdatePitch setOpenUpdate={setOpenUpdate} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
