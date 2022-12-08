@@ -39,7 +39,7 @@ const UpdatePitchCenter = ({ setOpenUpdate, user }) => {
         >
           X
         </button>
-        <h1>Update your profile</h1>
+        <h1>Update pitch</h1>
         <form>
           <input
             id="title"

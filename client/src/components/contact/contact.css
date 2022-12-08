@@ -1,0 +1,159 @@
+.contactUs{
+    position: relative;
+    width: 100%;
+    padding:20px 50px;
+}
+
+.contactUs .titleContact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.contactUs .titleContact h2{
+    color: #fff;
+    font-weight: 500;
+}
+
+.box{
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows:5fr 4fr ;
+    grid-template-areas: "form info" "form map";
+    grid-gap: 10px;
+    margin-top:10px;
+}
+
+.contact{
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 5px 35px rgba(0,0,0,0.15);
+}
+
+.form{
+    grid-area: form;
+}
+.info{
+    grid-area: info;
+}
+.map{
+    grid-area: map;
+}
+
+.contact h3 {
+    color: #3e3959;
+    font-weight:500;
+    font-size:1.4em;
+    margin-bottom: 5px;
+}
+
+/* form */
+.formBox{
+    position: relative;
+    width: 100%;
+}
+.formBox .row50{
+    display: flex;
+    gap: 20px;
+}
+
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    width: 50%;
+}
+
+.formBox .row100 .inputBox{
+    width: 100%;
+}
+
+.inputBox span{
+    color: #18b7ff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.inputBox input{
+    padding: 5px;
+    font-size: 1.1em;
+    outline: none;
+    border: 1px solid #333;
+}
+.inputBox textarea{
+    padding: 5px;
+    font-size: 1.1em;
+    outline: none;
+    border: 1px solid #333;
+    resize: none;
+    min-height: 140px;
+    margin-bottom: 10px;
+}
+.inputBox input[type="submit"]{
+    background:#ff578b;
+    color: #fff;
+    border: none;
+    font-size: 1.1em;
+    max-width: 120px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 14px 15px;
+}
+
+.inputBox ::placeholder{
+    color:#999;
+}
+
+/*info*/
+.info{
+    background:#0e3959;
+}
+.info h3{
+    color: #fff;
+}
+.info .infoBox div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.info .infoBox div span{
+    min-width: 25px;
+    height: 25px;
+    color: #fff;
+    background-color: #18b7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.info .infoBox div p{
+    color: #fff;
+    font-size: 1.1em;
+}
+.info .infoBox div a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+.sci{
+    display: flex;
+    margin-top: 20px;
+}
+.sci li {
+    list-style: none;
+    margin-right: 10px;
+}
+.sci li a{
+    color: #fff;
+    font-size: 1.5em;
+    color:#ccc;
+}
+
+.map{
+    padding: 0;
+}

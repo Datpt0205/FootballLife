@@ -35,7 +35,7 @@ const UpdatePitchCenter = ({ setOpenUpdate, user }) => {
     <div className="update">
       <div className="wrapper">
         <button onClick={() => setOpenUpdate(false)} style ={{marginLeft: 900}}>X</button>
-        <h1>Update your profile</h1>
+        <h1>Update Pitch Center</h1>
         <form>
           {/* <input id = "file" type="file" name = "file" onChange={(e) => setFile(e.target.files[0])} /> */}
           <input

@@ -8,7 +8,7 @@ import Maps from "./pages/map/Maps";
 import Weather from "./pages/weather/Weather";
 import ActivateLayout from "./pages/activateLayout/ActivateLayout";
 import ResetLayout from "./pages/resetLayout/ResetLayout";
-import Contact from "./pages/contact/Contact";
+import Contact from "./pages/contactLayout/ContactLayout";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/paypal" element={<Paypal />} />
         <Route path="/map" element={<Maps />} />
         <Route path="/weather" element={<Weather />} />
-        {/* <Route path="/contact" element={<Contact />} /> */}
+        <Route path="/contact" element={<Contact />} />
         <Route
           path="api/auth/activate/:activation_token"
           exact
